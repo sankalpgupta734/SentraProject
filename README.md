@@ -66,6 +66,7 @@ GET https://dummyjson.com/users
 ---
 
 ## Project Structure
+```
 src/
  ├── app/
  │   ├── auth/
@@ -96,7 +97,7 @@ src/
  │   └── app.module.ts
  │
  └── styles.css
-
+```
 ---
 
 ## How to Run the Project
