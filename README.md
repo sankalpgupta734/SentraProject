@@ -1,27 +1,140 @@
-# Sentra
+# Frontend Assignment – Authentication & Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+## Project Overview
+This project is a frontend application developed as part of the Frontend Developer assignment for Sentra.World.  
+It demonstrates a complete authentication flow, protected routing, API integration, and dashboard rendering using Angular.
 
-## Development server
+The application uses public mock APIs to simulate real-world frontend behavior without requiring a backend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## Tech Stack
+- Framework: Angular
+- Language: TypeScript
+- Styling: CSS (custom styles, no UI library)
+- HTTP Client: Angular HttpClient
+- Authentication API: DummyJSON
+- Data API: DummyJSON Users API
+- State Management: LocalStorage (token-based)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Authentication Flow
+- User logs in using a public authentication API
+- On successful login:
+  - Access token is stored in localStorage
+  - User details are stored locally
+- Dashboard route is protected
+- Unauthenticated users are redirected to the login page
+- Logout clears stored data and redirects to login
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## APIs Used
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Login API
+POST https://dummyjson.com/auth/login
 
-## Running end-to-end tests
+Demo Credentials  
+Username: emilys  
+Password: emilyspass  
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+### Users API
+GET https://dummyjson.com/users
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## Dashboard Features
+- Displays a list of users with the following details:
+  - Full Name
+  - Age
+  - Blood Group
+  - Birth Date
+  - Address
+- Shows a loader while data is being fetched
+- Graceful error handling with retry option
+- Logout functionality
+
+---
+
+## Route Protection
+- Dashboard route is protected using a functional route guard
+- Unauthorized access redirects to the login page
+
+---
+
+## Project Structure
+```
+src/
+ ├── app/
+ │   ├── auth/
+ │   │   ├── login/
+ │   │   │   ├── login.component.ts
+ │   │   │   ├── login.component.html
+ │   │   │   └── login.component.css
+ │   │   └── auth.service.ts
+ │   │
+ │   ├── dashboard/
+ │   │   ├── dashboard.component.ts
+ │   │   ├── dashboard.component.html
+ │   │   ├── dashboard.component.css
+ │   │   └── dashboard.service.ts
+ │   │
+ │   ├── core/
+ │   │   └── guards/
+ │   │       └── auth.guard.ts
+ │   │
+ │   ├── shared/
+ │   │   └── loader/
+ │   │       ├── loader.component.ts
+ │   │       ├── loader.component.html
+ │   │       └── loader.component.css
+ │   │
+ │   ├── app-routing.module.ts
+ │   ├── app.component.ts
+ │   └── app.module.ts
+ │
+ └── styles.css
+```
+---
+
+## How to Run the Project
+
+Prerequisites:
+- Node.js (v16 or above)
+- Angular CLI
+
+Steps:
+1. Install dependencies  
+   npm install  
+
+2. Run the application  
+   ng serve  
+
+3. Open the browser and navigate to  
+   http://localhost:4200
+
+---
+
+## Functional Highlights
+- Clean and modular code structure
+- Clear separation of concerns
+- Predictable state flow
+- User-friendly UI and messages
+- Realistic authentication simulation
+
+---
+
+## Notes
+- DummyJSON is used instead of ReqRes to avoid API access issues and to provide a more realistic authentication flow.
+- No real backend is required.
+- Token persistence is handled using browser localStorage.
+
+---
+
+## Author
+Sankalp  
+Frontend Developer  
+Submission for Sentra.World Technologies Pvt. Ltd
