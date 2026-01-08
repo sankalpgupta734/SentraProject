@@ -1,17 +1,18 @@
-# SentraProject
 Frontend Assignment – Authentication & Dashboard
-📌 Project Overview
+Project Overview
 
-This project is a frontend application built as part of the Frontend Developer assignment for Sentra.World.
-It demonstrates a mock authentication flow, protected routes, API integration, and robust error handling using Angular.
+This project is a frontend application developed as part of the Frontend Developer assignment for Sentra.World.
+It demonstrates a complete authentication flow, protected routing, API integration, and dashboard rendering using Angular.
 
-🛠️ Tech Stack
+The application uses public mock APIs to simulate real-world frontend behavior without requiring a backend.
+
+Tech Stack
 
 Framework: Angular
 
 Language: TypeScript
 
-Styling: CSS (custom, no UI library)
+Styling: CSS (custom styles, no UI library)
 
 HTTP Client: Angular HttpClient
 
@@ -21,9 +22,9 @@ Data API: DummyJSON Users API
 
 State Management: LocalStorage (token-based)
 
-🔐 Authentication Flow
+Authentication Flow
 
-User logs in using a public mock API
+User logs in using a public authentication API
 
 On successful login:
 
@@ -31,11 +32,13 @@ Access token is stored in localStorage
 
 User details are stored locally
 
-Unauthorized users cannot access the dashboard
+Dashboard route is protected
+
+Unauthenticated users are redirected to the login page
 
 Logout clears stored data and redirects to login
 
-🌐 APIs Used
+APIs Used
 Login API
 POST https://dummyjson.com/auth/login
 
@@ -48,7 +51,33 @@ Password: emilyspass
 Users API
 GET https://dummyjson.com/users
 
-📂 Project Structure
+Dashboard Features
+
+Displays a list of users with the following details:
+
+Full Name
+
+Age
+
+Blood Group
+
+Birth Date
+
+Address
+
+Shows a loader while data is being fetched
+
+Graceful error handling with retry option
+
+Logout functionality
+
+Route Protection
+
+Dashboard route is protected using a functional route guard
+
+Unauthorized access redirects to the login page
+
+Project Structure
 src/
  ├── app/
  │   ├── auth/
@@ -80,36 +109,10 @@ src/
  │
  └── styles.css
 
-📊 Dashboard Features
-
-Displays user data including:
-
-Name
-
-Age
-
-Blood Group
-
-Birth Date
-
-Address
-
-Loader while API call is in progress
-
-Graceful error handling with retry option
-
-Logout functionality
-
-🔒 Route Protection
-
-Dashboard route is protected using an Auth Guard
-
-Unauthenticated users are redirected to the login page
-
-⚙️ How to Run the Project
+How to Run the Project
 Prerequisites
 
-Node.js (v16+ recommended)
+Node.js (v16 or above)
 
 Angular CLI
 
@@ -118,32 +121,32 @@ npm install
 ng serve
 
 
-Open browser and navigate to:
+Open your browser and navigate to:
 
 http://localhost:4200
 
-✅ Functional Highlights
+Functional Highlights
+
+Clean and modular code structure
 
 Clear separation of concerns
 
 Predictable state flow
 
-Clean and readable code structure
+User-friendly UI and messages
 
 Realistic authentication simulation
 
-User-friendly UI and messages
+Notes
 
-📝 Notes
+DummyJSON is used instead of ReqRes to avoid API access issues and to provide a more realistic authentication flow.
 
-This project uses DummyJSON instead of ReqRes to avoid API access issues and provide a more realistic authentication flow.
+No real backend is required.
 
-No real backend is involved.
+Token persistence is handled using browser localStorage.
 
-Token persistence is handled via browser localStorage.
-
-👤 Author
+Author
 
 Sankalp
 Frontend Developer
-📧 Submitted for Sentra.World Technologies Pvt. Ltd.
+Submission for Sentra.World Technologies Pvt. Ltd
