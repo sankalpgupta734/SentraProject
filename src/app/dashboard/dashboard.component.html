@@ -1,0 +1,82 @@
+<header class="header">
+  <div class="header-content">
+    <div>
+      <div class="header-title">Dashboard</div>
+      <div class="header-subtitle">
+        Welcome, {{ user?.firstName }} {{ user?.lastName }}
+      </div>
+    </div>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="dashboard-container">
+  <div class="card">
+
+    <div class="card-header">
+      <h2>User Details</h2>
+      <button
+        class="refresh-btn"
+        (click)="fetchUsers()"
+        [disabled]="loading"
+      >
+        Refresh
+      </button>
+    </div>
+
+    <!-- Loader -->
+    <div *ngIf="loading" class="center-loader">
+      <app-loader></app-loader>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="error-card">
+      {{ error }}
+      <br /><br />
+      <button class="refresh-btn" (click)="fetchUsers()">Try Again</button>
+    </div>
+
+    <!-- User Cards -->
+    <div *ngIf="!loading && !error" class="user-grid">
+      <div class="user-card" *ngFor="let u of users">
+        <div class="user-row">
+
+          <img
+            [src]="u.image"
+            class="user-avatar"
+            alt="User Avatar"
+          />
+
+          <div class="user-info">
+            <div class="user-name">
+              {{ u.firstName }} {{ u.lastName }}
+            </div>
+
+            <div class="user-detail">
+              <strong>Age:</strong> {{ u.age }}
+            </div>
+
+            <div class="user-detail">
+              <strong>Blood Group:</strong> {{ u.bloodGroup }}
+            </div>
+
+            <div class="user-detail">
+              <strong>Birth Date:</strong> {{ u.birthDate | date:'mediumDate' }}
+            </div>
+
+            <div class="user-detail">
+              <strong>Address:</strong>
+              {{ u.address.address }},
+              {{ u.address.city }},
+              {{ u.address.state }},
+              {{ u.address.country }}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
